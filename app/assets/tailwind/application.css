@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+/* Morphing Portfolio View Transitions */
+
+/* Global transition timing */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.8s;
+}
+
+/* Page transition animations */
+@keyframes morph-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotateY(15deg);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+    filter: blur(0px);
+  }
+}
+
+@keyframes morph-out {
+  from {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+    filter: blur(0px);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.1) rotateY(-15deg);
+    filter: blur(5px);
+  }
+}
+
+@keyframes slide-up-morph {
+  from {
+    transform: translateY(100px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down-morph {
+  from {
+    transform: translateY(-50px) scale(1.1);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Root page transitions */
+::view-transition-old(root) {
+  animation: 0.4s cubic-bezier(0.4, 0, 1, 1) both morph-out;
+}
+
+::view-transition-new(root) {
+  animation: 0.8s cubic-bezier(0, 0, 0.2, 1) 0.2s both morph-in;
+}
+
+/* Navigation bar persistent element */
+.navbar {
+  view-transition-name: navbar;
+}
+
+::view-transition-old(navbar),
+::view-transition-new(navbar) {
+  animation-duration: 0.3s;
+}
+
+/* Project card morphing */
+.project-card {
+  view-transition-name: var(--project-id);
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Featured project special morphing */
+.featured-project {
+  view-transition-name: featured-project;
+}
+
+::view-transition-old(featured-project) {
+  animation: 0.6s cubic-bezier(0.4, 0, 1, 1) both slide-down-morph;
+}
+
+::view-transition-new(featured-project) {
+  animation: 0.8s cubic-bezier(0, 0, 0.2, 1) 0.1s both slide-up-morph;
+}
+
+/* Category filter morphing */
+.category-filter {
+  view-transition-name: category-filter;
+}
+
+/* Hero section morphing */
+.hero-section {
+  view-transition-name: hero-section;
+}
+
+::view-transition-old(hero-section) {
+  animation: 0.5s cubic-bezier(0.4, 0, 1, 1) both morph-out;
+}
+
+::view-transition-new(hero-section) {
+  animation: 0.7s cubic-bezier(0, 0, 0.2, 1) 0.1s both morph-in;
+}
+
+/* Project detail page specific transitions */
+.project-detail-hero {
+  view-transition-name: project-detail-hero;
+}
+
+.project-detail-content {
+  view-transition-name: project-detail-content;
+}
+
+/* Smooth scrolling for better transitions */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom gradient backgrounds for morphing effect */
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glass morphism effect */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Floating animation for cards */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Pulse effect for interactive elements */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.8); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
