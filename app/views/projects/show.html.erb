@@ -20,11 +20,12 @@
     <div class="container mx-auto px-6">
       <div class="max-w-4xl mx-auto text-center">
         <div class="mb-8">
-          <span class="px-4 py-2 bg-yellow-400 text-purple-800 rounded-full text-sm font-semibold">
+          <span class="project-category px-4 py-2 bg-yellow-400 text-purple-800 rounded-full text-sm font-semibold"
+                style="--project-id: project-<%= @project.id %>">
             <%= @project.category %>
           </span>
         </div>
-        <h1 class="text-5xl font-bold text-white mb-6 floating">
+        <h1 class="project-title text-5xl font-bold text-white mb-6 floating" style="--project-id: project-<%= @project.id %>">
           <%= @project.title %>
         </h1>
         <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
@@ -40,7 +41,8 @@
       <div class="max-w-6xl mx-auto">
         <!-- Project Image/Visual -->
         <div class="mb-12">
-          <div class="aspect-video bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center glass-morphism">
+          <div class="project-image aspect-video bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center glass-morphism"
+               style="--project-id: project-<%= @project.id %>">
             <span class="text-8xl">🎨</span>
           </div>
         </div>
